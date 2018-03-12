@@ -4,72 +4,93 @@
     <meta charset="utf-8">
     <title>Radio</title>
       <style>
-        i {
-          border: solid black;
-          border-width: 0 10px 10px 0;
-          display: inline-block;
-          padding: 20px;
+        .button {
+          background-color: #000000;
+          color: #FFFFFF;
+          padding: 0px;
+          border-radius: 10px;
+
+
+          margin:10px;
         }
-        .up {
-          transform: rotate(-135deg);
-          -webkit-transform: rotate(-135deg);
+        .btn-volume-up {
+          width: 70px;
+          height: 40px;
+          border-top-right-radius: 10000px;
+          border-top-left-radius: 10000px;
+          font-size: 150%;
         }
 
-        .down {
-          margin:auto;
-          transform: rotate(45deg);¨
-          -webkit-transform: rotate(45deg);
+        .btn-volume-down {
+          width: 70px;
+          height: 40px;
+          border-bottom-right-radius: 10000px;
+          border-bottom-left-radius: 10000px;
+          font-size: 150%;
         }
 
         .home {
-          margin: auto;
-          background-color: lightblue;
-          border: none;
-          color: white;
-          padding: 15px 32px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 20px;
+          width: 90px;
+          height: 40px;
         }
         .sidebar {
-          align-content: center;
+
         }
-        a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-}
+        .volumeText {
+          margin: 25px;
+          font-size: 150%;
+        }
 
-a:hover {
-    background-color: #ddd;
-    color: black;
-}
 
-.previous {
-    background-color: #f1f1f1;
-    color: black;
-}
-
-.next {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.round {
-    border-radius: 50%;
-}
       </style>
   </head>
   <body>
     <aside class="sidebar">
-      <button class="home" type="button" name="home">Home</button>
+      <button onclick="home()" class="button home" type="button" name="home">Home</button>
       <br>
       <br>
-      <a href="#" class="volume up">&#8248;</a>
-      <p>Vol</p>
-      <a href="#" class="volume down">v</a>
+      <button onclick="volumeUp()" class="button btn-volume-up" type="button" name"up">  +  </button>
+      <p class="volumeText">Vol</p>
+      <button onclick="volumeDown()" class="button btn-volume-down" type="button" name"down">  -  </button>
 
     </aside>
   </body>
+  <script>
+  var volume = 5
+  function volumeUp() {
+    if (volume < 10) {
+      volume++;
+    // If we have audio playing we can do this:
+    // document.getElementById("myAudio").volume = volume / 10;
+      if (volume == 10) {
+        alert("max");
+      }
+      else {
+        alert(volume);
+      }
+    } else {
+      alert("max");
+    }
+
+  }
+  function volumeDown() {
+    if (volume > 0) {
+      volume--;
+      // If we have audio playing we can do this:
+      // document.getElementById("myAudio").volume = volume / 10;
+      if (volume == 0) {
+        alert("muted")
+      } else {
+        alert(volume);
+      }
+    }
+    else {
+      alert("muted");
+    }
+  }
+  function home() {
+    // not sure which is the home page but this is for now.
+    document.location.href = "UI.html"
+  }
+  </script>
 </html>
